@@ -19,7 +19,7 @@ export default function App() {
     fetch(PROPERTIES_URL)
       .then((r) => r.json())
       .then((data) => {
-        const list = data.properties || data || [];
+        const list = Array.isArray(data) ? data : data.properties;
         setProperties(data.properties || []);
         setFiltered(data.properties || []);
       })
