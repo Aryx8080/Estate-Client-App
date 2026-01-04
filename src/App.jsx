@@ -5,26 +5,22 @@ import Results from "./components/Results";
 import PropertyPage from "./components/PropertyPage";
 import FavouritesPanel from "./components/FavouritesPanel";
 
-// load JSON (public path)
-const PROPERTIES_URL = "/properties.json";
+const PROPERTIES_URL = `${import.meta.env.BASE_URL}properties.json`;
 
 export default function App() {
   const [properties, setProperties] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [favourites, setFavourites] = useState(() => {
-    try {
-      return JSON.parse(localStorage.getItem("favourites")) || [];
-    } catch {
-      return [];
-    }
+    try { return JSON.parse(localStorage.getItem("favourites")) || []; }
+    catch { return []; }
   });
 
   useEffect(() => {
     fetch(PROPERTIES_URL)
       .then((r) => r.json())
       .then((data) => {
-        setProperties(data.properties);
-        setFiltered(data.properties);
+        setProperties(data.properties || []);
+        setFiltered(data.properties || []);
       })
       .catch((err) => console.error("Failed to load properties:", err));
   }, []);
@@ -34,11 +30,12 @@ export default function App() {
   }, [favourites]);
 
   const addFavourite = (id) => {
-    if (!favourites.includes(id)) setFavourites([...favourites, id]);
+    setFavourites((prev) => (prev.includes(id) ? prev : [...prev, id]));
   };
 
-  const removeFavourite = (id) =>
+  const removeFavourite = (id) => {
     setFavourites((prev) => prev.filter((pid) => pid !== id));
+  };
 
   const clearFavourites = () => setFavourites([]);
 
@@ -46,9 +43,7 @@ export default function App() {
     <div className="app">
       <header className="header">
         <Link to="/"><h1>Estate Client App</h1></Link>
-        <nav>
-          <Link to="/">Search</Link>
-        </nav>
+        <nav><Link to="/">Search</Link></nav>
       </header>
 
       <div className="main-grid">
@@ -57,6 +52,7 @@ export default function App() {
           properties={properties}
           onRemove={removeFavourite}
           onClear={clearFavourites}
+          onDropAdd={addFavourite}
         />
 
         <main className="content">
@@ -65,10 +61,7 @@ export default function App() {
               path="/"
               element={
                 <>
-                  <SearchForm
-                    properties={properties}
-                    setFiltered={setFiltered}
-                  />
+                  <SearchForm properties={properties} setFiltered={setFiltered} />
                   <Results
                     properties={filtered}
                     onAddFavourite={addFavourite}
@@ -92,7 +85,7 @@ export default function App() {
         </main>
       </div>
 
-      <footer className="footer">Coursework - Advanced Client-Side Web Dev</footer>
+      <footer className="footer">Advanced Client-Side Web Development Coursework</footer>
     </div>
   );
 }

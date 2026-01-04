@@ -12,7 +12,11 @@ export default function PropertyCard({ property, onAddFavourite, favourite }) {
     e.dataTransfer.setData("text/plain", JSON.stringify({ kind: "property", id: property.id }));
     e.dataTransfer.effectAllowed = "copy";
   };
-
+  const withBase = (p) => {
+  if (!p) return "";
+  if (p.startsWith("http")) return p;
+  return `${import.meta.env.BASE_URL}${p.replace(/^\/+/, "")}`;
+  };
   return (
     <article className="card" draggable="true" onDragStart={onDragStart}>
       <Link to={`/property/${property.id}`} aria-label={`View ${property.type}`}>
