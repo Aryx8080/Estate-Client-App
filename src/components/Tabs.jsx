@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import withBase from "../utils/withBase";
 
 export default function Tabs({ description, floorplan, location }) {
   const [active, setActive] = useState("description");
@@ -8,6 +9,7 @@ export default function Tabs({ description, floorplan, location }) {
       {/* TAB BUTTONS */}
       <div className="tab-buttons">
         <button
+          type="button"
           className={active === "description" ? "active" : ""}
           onClick={() => setActive("description")}
         >
@@ -15,6 +17,7 @@ export default function Tabs({ description, floorplan, location }) {
         </button>
 
         <button
+          type="button"
           className={active === "floorplan" ? "active" : ""}
           onClick={() => setActive("floorplan")}
         >
@@ -22,6 +25,7 @@ export default function Tabs({ description, floorplan, location }) {
         </button>
 
         <button
+          type="button"
           className={active === "map" ? "active" : ""}
           onClick={() => setActive("map")}
         >
@@ -41,7 +45,7 @@ export default function Tabs({ description, floorplan, location }) {
           <div className="tab-panel">
             {floorplan ? (
               <img
-                src={floorplan}
+                src={withBase(floorplan)}
                 alt="Property floor plan"
                 style={{
                   maxWidth: "100%",
@@ -49,7 +53,7 @@ export default function Tabs({ description, floorplan, location }) {
                   border: "1px solid #ddd",
                 }}
                 onError={(e) => {
-                  e.target.style.display = "none";
+                  e.currentTarget.style.display = "none";
                 }}
               />
             ) : (
@@ -61,7 +65,7 @@ export default function Tabs({ description, floorplan, location }) {
         {active === "map" && (
           <div className="tab-panel">
             <p>
-              <strong>Location:</strong> {location}
+              <strong>Location:</strong> {location || "Unknown"}
             </p>
             <p>(Map integration could be added here)</p>
           </div>

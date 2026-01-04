@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import withBase from "../utils/withBase";
 
 export default function PropertyCard({ property, onAddFavourite, favourite }) {
   // Use first gallery image as the card thumbnail
@@ -12,42 +13,42 @@ export default function PropertyCard({ property, onAddFavourite, favourite }) {
     e.dataTransfer.setData("text/plain", JSON.stringify({ kind: "property", id: property.id }));
     e.dataTransfer.effectAllowed = "copy";
   };
-  const withBase = (p) => {
-  if (!p) return "";
-  if (p.startsWith("http")) return p;
-  return `${import.meta.env.BASE_URL}${p.replace(/^\/+/, "")}`;
-  };
+
   return (
     <article className="card" draggable="true" onDragStart={onDragStart}>
-      <Link to={`/property/${property.id}`} aria-label={`View ${property.type}`}>
+      {/* Make the whole top area clickable (more reliable UX) */}
+      <Link to={`/property/${property.id}`} className="card-link" aria-label={`View ${property.type}`}>
         {thumbnail ? (
           <img
-            src={thumbnail}
+            src={withBase(thumbnail)}
             alt={`${property.type} thumbnail`}
             className="card-img"
             onError={(e) => {
-              // hide broken image if path is wrong
               e.currentTarget.style.display = "none";
             }}
           />
         ) : null}
-      </Link>
 
-      <div className="card-body">
-        <h3>
-          {property.type} — £{Number(property.price).toLocaleString()}
-        </h3>
-        <p>{String(property.description || "").slice(0, 120)}...</p>
+        <div className="card-body">
+          <h3>
+            {property.type} — £{Number(property.price).toLocaleString()}
+          </h3>
+          <p>{String(property.description || "").slice(0, 120)}...</p>
 
-        <div className="card-meta">
-          <span>{property.bedrooms} beds</span>
-          <span>{property.location}</span>
+          <div className="card-meta">
+            <span>{property.bedrooms} beds</span>
+            <span>{property.location}</span>
+          </div>
         </div>
-      </div>
+      </Link>
 
       <div className="card-actions">
         <button
-          onClick={() => onAddFavourite(property.id)}
+          type="button"
+          onClick={(e) => {
+            e.preventDefault(); // prevent Link navigation when clicking button
+            onAddFavourite(property.id);
+          }}
           disabled={favourite}
           aria-pressed={favourite}
         >
