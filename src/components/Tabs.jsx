@@ -1,0 +1,72 @@
+import React, { useState } from "react";
+
+export default function Tabs({ description, floorplan, location }) {
+  const [active, setActive] = useState("description");
+
+  return (
+    <div className="tabs">
+      {/* TAB BUTTONS */}
+      <div className="tab-buttons">
+        <button
+          className={active === "description" ? "active" : ""}
+          onClick={() => setActive("description")}
+        >
+          Description
+        </button>
+
+        <button
+          className={active === "floorplan" ? "active" : ""}
+          onClick={() => setActive("floorplan")}
+        >
+          Floor plan
+        </button>
+
+        <button
+          className={active === "map" ? "active" : ""}
+          onClick={() => setActive("map")}
+        >
+          Map
+        </button>
+      </div>
+
+      {/* TAB CONTENT */}
+      <div className="tab-content">
+        {active === "description" && (
+          <div className="tab-panel">
+            <p>{description || "No description available."}</p>
+          </div>
+        )}
+
+        {active === "floorplan" && (
+          <div className="tab-panel">
+            {floorplan ? (
+              <img
+                src={floorplan}
+                alt="Property floor plan"
+                style={{
+                  maxWidth: "100%",
+                  borderRadius: "8px",
+                  border: "1px solid #ddd",
+                }}
+                onError={(e) => {
+                  e.target.style.display = "none";
+                }}
+              />
+            ) : (
+              <p>No floor plan available for this property.</p>
+            )}
+          </div>
+        )}
+
+        {active === "map" && (
+          <div className="tab-panel">
+            <p>
+              <strong>Location:</strong> {location}
+            </p>
+            <p>(Map integration could be added here)</p>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}

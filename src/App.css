@@ -1,0 +1,207 @@
+/* ---------- ROOT THEME ---------- */
+:root {
+  --bg-main: #121212;
+  --bg-panel: #1b1b1b;
+  --bg-card: #1f1f1f;
+
+  --text-main: #f4f4f4;
+  --text-muted: #b5b5b5;
+
+  --accent: #e0a84c;
+  --accent-soft: #f2c97d;
+
+  --border-soft: rgba(255, 255, 255, 0.08);
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* ---------- GLOBAL ---------- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background: radial-gradient(circle at top, #1c1c1c, var(--bg-main));
+  color: var(--text-main);
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- HEADER ---------- */
+.header {
+  background: linear-gradient(135deg, #1a1a1a, #141414);
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border-soft);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header h1 {
+  margin: 0;
+  color: var(--accent-soft);
+}
+
+/* ---------- LAYOUT ---------- */
+.main-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+/* ---------- PANELS ---------- */
+.search-form,
+.favourites-panel {
+  background: var(--bg-panel);
+  padding: 1.2rem;
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--border-soft);
+}
+
+.search-form label {
+  color: var(--text-muted);
+}
+
+.search-form input,
+.search-form select {
+  background: #101010;
+  border: 1px solid var(--border-soft);
+  color: var(--text-main);
+  border-radius: 10px;
+  padding: 0.4rem 0.6rem;
+}
+
+.search-form input:focus,
+.search-form select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* ---------- BUTTONS ---------- */
+button {
+  border-radius: 20px;
+  padding: 0.45rem 0.9rem;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+button.primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+  color: #111;
+}
+
+button.secondary {
+  background: #2a2a2a;
+  color: var(--text-main);
+}
+
+/* ---------- RESULTS ---------- */
+.results h2 {
+  margin-top: 0;
+  color: var(--accent-soft);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ---------- PROPERTY CARD ---------- */
+.card {
+  background: linear-gradient(180deg, #1f1f1f, #181818);
+  border-radius: 18px;
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  border: 1px solid var(--border-soft);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+}
+
+.card-img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 1rem;
+}
+
+.card-body h3 {
+  margin: 0;
+  color: var(--accent-soft);
+}
+
+.card-meta {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+}
+
+.card-actions {
+  padding: 0.8rem 1rem 1rem;
+}
+
+.card-actions button {
+  width: 100%;
+  background: rgba(224, 168, 76, 0.15);
+  color: var(--accent-soft);
+}
+
+/* ---------- PROPERTY PAGE ---------- */
+.property-page {
+  background: var(--bg-panel);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--border-soft);
+}
+
+.property-header h2 {
+  color: var(--accent-soft);
+}
+
+/* ---------- TABS ---------- */
+.tab-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tab-buttons button {
+  background: #262626;
+  color: var(--text-muted);
+  border-radius: 20px;
+}
+
+.tab-buttons button.active {
+  background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+  color: #111;
+}
+
+/* ---------- SCROLL ---------- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
