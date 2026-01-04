@@ -11,30 +11,31 @@ export default function App() {
   const [properties, setProperties] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [favourites, setFavourites] = useState(() => {
-    try { return JSON.parse(localStorage.getItem("favourites")) || []; }
-    catch { return []; }
+    try {
+      return JSON.parse(localStorage.getItem("favourites")) || [];
+    } catch {
+      return [];
+    }
   });
 
   useEffect(() => {
-  const PROPERTIES_URL = `${import.meta.env.BASE_URL}properties.json`;
-
-  fetch(PROPERTIES_URL)
-    .then((r) => {
-      if (!r.ok) throw new Error(`HTTP ${r.status} when fetching ${PROPERTIES_URL}`);
-      return r.json();
-    })
-    .then((data) => {
-      const list = Array.isArray(data) ? data : data.properties;
-      setProperties(list || []);
-      setFiltered(list || []);
-      console.log("Loaded properties:", (list || []).length);
-    })
-    .catch((e) => {
-      console.error("Failed to load properties:", e);
-      setProperties([]);
-      setFiltered([]);
-    });
-    }, []);
+    fetch(PROPERTIES_URL)
+      .then((r) => {
+        if (!r.ok) throw new Error(`HTTP ${r.status} when fetching ${PROPERTIES_URL}`);
+        return r.json();
+      })
+      .then((data) => {
+        const list = Array.isArray(data) ? data : data.properties;
+        setProperties(list || []);
+        setFiltered(list || []);
+        console.log("Loaded properties:", (list || []).length);
+      })
+      .catch((e) => {
+        console.error("Failed to load properties:", e);
+        setProperties([]);
+        setFiltered([]);
+      });
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("favourites", JSON.stringify(favourites));
@@ -67,6 +68,9 @@ export default function App() {
         />
 
         <main className="content">
+          {/* quick visual debug (remove later) */}
+          {/* <p style={{ color: "white" }}>Loaded: {properties.length}</p> */}
+
           <Routes>
             <Route
               path="/"
