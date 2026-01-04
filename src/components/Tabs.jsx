@@ -59,6 +59,13 @@ export default function Tabs({ description, floorplan, location }) {
             ) : (
               <p>No floor plan available for this property.</p>
             )}
+            onError={(e) => {
+            e.currentTarget.style.display = "none";
+            e.currentTarget.parentElement?.insertAdjacentHTML(
+             "beforeend",
+             "<p style='margin-top:10px;opacity:.8'>Floorplan image not found (check filename/case and /public/images path).</p>"
+           );
+          }}
           </div>
         )}
 
