@@ -16,15 +16,25 @@ export default function App() {
   });
 
   useEffect(() => {
-    fetch(PROPERTIES_URL)
-      .then((r) => r.json())
-      .then((data) => {
-        const list = Array.isArray(data) ? data : data.properties;
-        setProperties(data.properties || []);
-        setFiltered(data.properties || []);
-      })
-      .catch((err) => console.error("Failed to load properties:", err));
-  }, []);
+  const PROPERTIES_URL = `${import.meta.env.BASE_URL}properties.json`;
+
+  fetch(PROPERTIES_URL)
+    .then((r) => {
+      if (!r.ok) throw new Error(`HTTP ${r.status} when fetching ${PROPERTIES_URL}`);
+      return r.json();
+    })
+    .then((data) => {
+      const list = Array.isArray(data) ? data : data.properties;
+      setProperties(list || []);
+      setFiltered(list || []);
+      console.log("Loaded properties:", (list || []).length);
+    })
+    .catch((e) => {
+      console.error("Failed to load properties:", e);
+      setProperties([]);
+      setFiltered([]);
+    });
+    }, []);
 
   useEffect(() => {
     localStorage.setItem("favourites", JSON.stringify(favourites));
