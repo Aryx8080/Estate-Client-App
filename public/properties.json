@@ -9,13 +9,13 @@
       "description": "Attractive three bedroom semi-detached family home within walking distance of Petts Wood station.",
       "added": { "month": "January", "day": 15, "year": 2024 },
       "images": [
-        "/images/prop1/img1.jpg",
-        "/images/prop1/img2.jpg",
-        "/images/prop1/img3.jpg",
-        "/images/prop1/img4.jpg",
-        "/images/prop1/img5.jpg"
+        "images/prop1/img1.jpg",
+        "images/prop1/img2.jpg",
+        "images/prop1/img3.jpg",
+        "images/prop1/img4.jpg",
+        "images/prop1/img5.jpg"
       ],
-      "floorplan": "/images/prop1/floorplan.jpg"
+      "floorplan": "images/prop1/floorplan.jpg"
     },
     {
       "id": "prop2",
@@ -26,13 +26,13 @@
       "description": "Modern two bedroom flat presented in excellent decorative order with private garden.",
       "added": { "month": "March", "day": 3, "year": 2023 },
       "images": [
-        "/images/prop2/img1.jpg",
-        "/images/prop2/img2.jpg",
-        "/images/prop2/img3.jpg",
-        "/images/prop2/img4.jpg",
-        "/images/prop2/img5.jpg"
+        "images/prop2/img1.jpg",
+        "images/prop2/img2.jpg",
+        "images/prop2/img3.jpg",
+        "images/prop2/img4.jpg",
+        "images/prop2/img5.jpg"
       ],
-      "floorplan": "/images/prop2/floorplan.jpg"
+      "floorplan": "images/prop2/floorplan.jpg"
     },
     {
       "id": "prop3",
@@ -43,13 +43,13 @@
       "description": "Substantial five bedroom townhouse in a prime London location close to transport links.",
       "added": { "month": "October", "day": 12, "year": 2022 },
       "images": [
-        "/images/prop3/img1.jpg",
-        "/images/prop3/img2.jpg",
-        "/images/prop3/img3.jpg",
-        "/images/prop3/img4.jpg",
-        "/images/prop3/img5.jpg"
+        "images/prop3/img1.jpg",
+        "images/prop3/img2.jpg",
+        "images/prop3/img3.jpg",
+        "images/prop3/img4.jpg",
+        "images/prop3/img5.jpg"
       ],
-      "floorplan": "/images/prop3/floorplan.jpg"
+      "floorplan": "images/prop3/floorplan.jpg"
     },
     {
       "id": "prop4",
@@ -60,13 +60,13 @@
       "description": "Bright one bedroom apartment ideal for first-time buyers or investors.",
       "added": { "month": "June", "day": 20, "year": 2024 },
       "images": [
-        "/images/prop4/img1.jpg",
-        "/images/prop4/img2.jpg",
-        "/images/prop4/img3.jpg",
-        "/images/prop4/img4.jpg",
-        "/images/prop4/img5.jpg"
+        "images/prop4/img1.jpg",
+        "images/prop4/img2.jpg",
+        "images/prop4/img3.jpg",
+        "images/prop4/img4.jpg",
+        "images/prop4/img5.jpg"
       ],
-      "floorplan": "/images/prop4/floorplan.jpg"
+      "floorplan": "images/prop4/floorplan.jpg"
     },
     {
       "id": "prop5",
@@ -77,13 +77,13 @@
       "description": "Spacious four bedroom detached house with large garden and off-street parking.",
       "added": { "month": "September", "day": 5, "year": 2023 },
       "images": [
-        "/images/prop5/img1.jpg",
-        "/images/prop5/img2.jpg",
-        "/images/prop5/img3.jpg",
-        "/images/prop5/img4.jpg",
-        "/images/prop5/img5.jpg"
+        "images/prop5/img1.jpg",
+        "images/prop5/img2.jpg",
+        "images/prop5/img3.jpg",
+        "images/prop5/img4.jpg",
+        "images/prop5/img5.jpg"
       ],
-      "floorplan": "/images/prop5/floorplan.jpg"
+      "floorplan": "images/prop5/floorplan.jpg"
     },
     {
       "id": "prop6",
@@ -94,13 +94,13 @@
       "description": "Stylish two bedroom flat located moments from Greenwich Park and DLR.",
       "added": { "month": "February", "day": 10, "year": 2024 },
       "images": [
-        "/images/prop6/img1.jpg",
-        "/images/prop6/img2.jpg",
-        "/images/prop6/img3.jpg",
-        "/images/prop6/img4.jpg",
-        "/images/prop6/img5.jpg"
+        "images/prop6/img1.jpg",
+        "images/prop6/img2.jpg",
+        "images/prop6/img3.jpg",
+        "images/prop6/img4.jpg",
+        "images/prop6/img5.jpg"
       ],
-      "floorplan": "/images/prop6/floorplan.jpg"
+      "floorplan": "images/prop6/floorplan.jpg"
     },
     {
       "id": "prop7",
@@ -111,13 +111,13 @@
       "description": "Well-presented three bedroom family home with excellent transport links.",
       "added": { "month": "July", "day": 18, "year": 2022 },
       "images": [
-        "/images/prop7/img1.jpg",
-        "/images/prop7/img2.jpg",
-        "/images/prop7/img3.jpg",
-        "/images/prop7/img4.jpg",
-        "/images/prop7/img5.jpg"
+        "images/prop7/img1.jpg",
+        "images/prop7/img2.jpg",
+        "images/prop7/img3.jpg",
+        "images/prop7/img4.jpg",
+        "images/prop7/img5.jpg"
       ],
-      "floorplan": "/images/prop7/floorplan.jpg"
+      "floorplan": "images/prop7/floorplan.jpg"
     }
   ]
 }
